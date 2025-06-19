@@ -25,23 +25,26 @@ import { useWrappedReownAdapter } from '@jup-ag/jup-mobile-adapter';
 initializeSolflareAndMetamaskSnap();
 
 const ExampleSelectedWallets: React.FC<{ theme: IUnifiedTheme; lang: AllLanguage }> = ({ theme, lang }) => {
-  const { reownAdapter, jupiterAdapter } = useWrappedReownAdapter({
-    appKitOptions: {
-      metadata: {
-        name: 'Jupiter',
-        description: `Jupiter is one of the largest decentralized trading platform and one of the most active governance community in crypto. We're building the everything exchange for everyone.`,
-        url: 'https://jup.ag', // origin must match your domain & subdomain
-        icons: ['https://jup.ag/svg/jupiter-logo.png'],
-      },
-      projectId: '4a4e231c4004ef7b77076a87094fba61', // Fill in your project id
-      features: {
-        analytics: false,
-        socials: ['google', 'x', 'apple'],
-        email: false,
-      },
-      enableWallets: false,
-    },
-  });
+  // Temporarily commented out due to module not found error
+  // const { reownAdapter, jupiterAdapter } = useWrappedReownAdapter({
+  //   appKitOptions: {
+  //     metadata: {
+  //       name: 'Jupiter',
+  //       description: `Jupiter is one of the largest decentralized trading platform and one of the most active governance community in crypto. We're building the everything exchange for everyone.`,
+  //       url: 'https://jup.ag', // origin must match your domain & subdomain
+  //       icons: ['https://jup.ag/svg/jupiter-logo.png'],
+  //     },
+  //     projectId: '4a4e231c4004ef7b77076a87094fba61', // Fill in your project id
+  //     features: {
+  //       analytics: false,
+  //       socials: ['google', 'x', 'apple'],
+  //       email: false,
+  //     },
+  //     enableWallets: false,
+  //   },
+  // });
+  const reownAdapter = null;
+  const jupiterAdapter = null;
 
   const wallets: Adapter[] = useMemo(() => {
     return [
@@ -49,8 +52,8 @@ const ExampleSelectedWallets: React.FC<{ theme: IUnifiedTheme; lang: AllLanguage
       new SolflareWalletAdapter(),
       new CoinbaseWalletAdapter(),
       new TrustWalletAdapter(),
-      reownAdapter,
-      jupiterAdapter
+      // reownAdapter,
+      // jupiterAdapter
     ].filter((item) => item && item.name && item.icon) as Adapter[];
   }, []);
 
